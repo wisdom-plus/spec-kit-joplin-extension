@@ -75,6 +75,25 @@
 - What happens when [boundary condition]?
 - How does system handle [error scenario]?
 
+## Security & Performance Considerations *(mandatory)*
+
+<!--
+  ACTION REQUIRED: Summarize security and performance decisions tied to the feature.
+-->
+
+### Security
+
+- Permissions/least privilege: [what is requested and why]
+- Input validation: [key inputs and validation strategy]
+- Secrets handling: [how secrets are avoided or protected]
+- Network access: [endpoints, why needed, and constraints]
+
+### Performance
+
+- User-visible latency target: [e.g., <200ms for common actions]
+- Long-running work: [async strategy, batching, caching]
+- Measurement plan: [what will be measured and how]
+
 ## Requirements *(mandatory)*
 
 <!--
