@@ -1,50 +1,65 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: template → 1.0.0
+- Modified principles: New set defined (Code Quality & Maintainability; Security & Privacy by Design;
+  Performance & Responsiveness; Joplin Compatibility & Stability; Testing & Review Discipline)
+- Added sections: Joplin Extension Constraints; Development Workflow & Quality Gates
+- Removed sections: None
+- Templates requiring updates:
+  - ✅ .specify/templates/plan-template.md
+  - ✅ .specify/templates/spec-template.md
+  - ✅ .specify/templates/tasks-template.md
+- Follow-up TODOs: Ratification date needed
+-->
+# Joplin Extension Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Code Quality & Maintainability
+All extension code MUST be readable, typed, and modular. Enforce linting/formatting,
+avoid large functions, and document non-obvious behavior. Public interfaces MUST be
+stable and minimal to reduce future migration costs.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Security & Privacy by Design
+Extensions MUST request the least privilege, validate all inputs, and avoid unsafe
+evaluation or shell execution. Secrets MUST NOT be logged or stored in plaintext.
+Network access MUST be explicit, minimal, and documented in the spec.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Performance & Responsiveness
+User-visible actions MUST remain responsive. Long-running work MUST be asynchronous,
+and large data operations MUST be incremental or cached. Performance regressions MUST
+be measured and documented with a mitigation plan.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Joplin Compatibility & Stability
+The extension MUST target supported Joplin APIs and degrade gracefully if a capability
+is unavailable. Manifest and settings MUST remain backward compatible unless a
+documented migration is provided.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Testing & Review Discipline
+Core logic MUST be covered by automated tests; any exception requires explicit
+justification in the spec. Every change MUST pass lint, type checks, and tests before
+review, and reviews MUST verify compliance with this constitution.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Joplin Extension Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- The extension MUST include a clear manifest with accurate permissions and metadata.
+- User data storage MUST be minimal, scoped to the feature, and documented.
+- External dependencies MUST be pinned and periodically reviewed for security updates.
+- UI changes MUST follow Joplin UX conventions to avoid confusing behavior.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow & Quality Gates
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Specs MUST include security and performance considerations before implementation.
+- Changes MUST include tests or a documented exception approved in review.
+- Performance-sensitive code MUST include a measurement plan or benchmark notes.
+- Release notes MUST list user-visible changes and any migrations.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution supersedes other guidance when conflicts arise.
+- Amendments require documented rationale, impact analysis, and approval in review.
+- Versioning follows semantic versioning: MAJOR for breaking governance changes,
+  MINOR for new principles/sections, PATCH for clarifications.
+- Compliance MUST be checked in plan/spec/tasks templates and in code reviews.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): original adoption date unknown | **Last Amended**: 2026-01-24

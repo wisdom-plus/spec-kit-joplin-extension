@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Kindle Highlights Import
+  version: 1.0.0
+  description: Internal contract for import workflow in the extension.
+paths:
+  /imports:
+    post:
+      summary: Start an import for a selected book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - bookTitle
+                - targetMode
+              properties:
+                bookTitle:
+                  type: string
+                targetMode:
+                  type: string
+                  enum: [new_note, existing_note]
+                targetNoteId:
+                  type: string
+      responses:
+        '202':
+          description: Import started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+  /imports/{sessionId}:
+    get:
+      summary: Get import status
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current import status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [in_progress, completed, failed, canceled]
+                  importedCount:
+                    type: integer
+                  errorMessage:
+                    type: string
+    delete:
+      summary: Cancel an import
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Import canceled

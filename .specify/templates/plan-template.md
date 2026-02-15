@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Code Quality & Maintainability: typing, linting, and modular structure planned
+- Security & Privacy: least privilege, input validation, secrets handling documented
+- Performance & Responsiveness: async strategy and measurement plan defined
+- Joplin Compatibility: target API/manifest compatibility and migration notes confirmed
+- Testing & Review Discipline: test approach and exceptions (if any) documented
 
 ## Project Structure
 
